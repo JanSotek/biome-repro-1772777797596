@@ -1,0 +1,79 @@
+{
+	"extends": ["./format-lab-biome.json"],
+	"files": {
+		"includes": [
+			"**/*.js",
+			"**/.storybook/preview.tsx",
+			"!src/widget.js",
+			"!**/data.ts",
+			"!src/modern/test",
+			"!!**/node_modules",
+			"!!**/.next",
+			"!!**/out_dev",
+			"!!**/out_stag",
+			"!!**/out_prod",
+			"!!**/build",
+			"!!**/dist",
+			"!!**/coverage"
+		]
+	},
+	"formatter": {
+		"enabled": true,
+		"lineWidth": 90,
+		"formatWithErrors": false
+	},
+	"assist": {
+		"actions": {
+			"source": {
+				"organizeImports": {
+					"level": "on",
+					"options": {
+						"groups": [
+							"react",
+							":BLANK_LINE:",
+							{ "type": false, "source": [":PACKAGE:", "!classnames"] },
+							":BLANK_LINE:",
+							{
+								"type": false,
+								"source": [":ALIAS:", "!@/modern/components/**"]
+							},
+							":BLANK_LINE:",
+							["@/modern/components/**"],
+							":BLANK_LINE:",
+							{ "type": false, "source": [":PATH:", "!**/*.scss"] },
+							":BLANK_LINE:",
+							{ "type": true },
+							":BLANK_LINE:",
+							"classnames",
+							"**/*.scss"
+						]
+					}
+				}
+			}
+		}
+	},
+	"linter": {
+		"rules": {
+			"style": {
+				"useNamingConvention": {
+					"level": "warn",
+					"fix": "none",
+					"options": {
+						"strictCase": false,
+						"conventions": [
+							{
+								"selector": {
+									"kind": "objectLiteralProperty"
+								},
+								"formats": ["camelCase", "CONSTANT_CASE"]
+							}
+						]
+					}
+				}
+			},
+			"performance": {
+				"noImgElement": "off"
+			}
+		}
+	}
+}

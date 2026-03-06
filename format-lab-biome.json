@@ -1,0 +1,86 @@
+{
+	"$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
+	"vcs": {
+		"enabled": true,
+		"clientKind": "git",
+		"useIgnoreFile": true,
+		"defaultBranch": "master"
+	},
+	"files": {
+		"ignoreUnknown": true,
+		"includes": ["**/src/**/*.ts", "**/src/**/*.tsx", "!!node_modules"]
+	},
+	"assist": { "actions": { "source": { "organizeImports": "on" } } },
+	"linter": {
+		"enabled": true,
+		"rules": {
+			"recommended": true,
+			"suspicious": {
+				"noConsole": "error",
+				"noEmptyBlockStatements": "error",
+				"useAdjacentOverloadSignatures": "error"
+			},
+			"correctness": {
+				"noUnusedVariables": "warn",
+				"noUnusedImports": "warn",
+				"noUndeclaredDependencies": "error",
+				"useHookAtTopLevel": "off"
+			},
+			"style": {
+				"useFragmentSyntax": "error",
+				"useConsistentArrayType": "error",
+				"useBlockStatements": "warn",
+				"useCollapsedElseIf": "error",
+				"useNamingConvention": {
+					"level": "warn",
+					"options": {
+						"strictCase": false,
+						"conventions": [
+							{
+								"selector": {
+									"kind": "interface"
+								},
+								"match": "I(.*)|(.*?)Error",
+								"formats": ["PascalCase"]
+							}
+						]
+					}
+				},
+				"noRestrictedImports": "off",
+				"noEnum": "warn",
+				"noMagicNumbers": "info",
+				"noNestedTernary": "error",
+				"useConsistentCurlyBraces": "error",
+				"useArrayLiterals": "error"
+			},
+			"a11y": {
+				"useAnchorContent": "error",
+				"noLabelWithoutControl": "error",
+				"useKeyWithClickEvents": "off"
+			},
+			"complexity": {
+				"useOptionalChain": "off"
+			}
+		}
+	},
+	"formatter": {
+		"includes": ["**/*.ts", "**/*.tsx"],
+		"enabled": true,
+		"formatWithErrors": true,
+		"attributePosition": "multiline",
+		"useEditorconfig": true,
+		"lineWidth": 120,
+		"indentStyle": "tab"
+	},
+	"javascript": {
+		"jsxRuntime": "reactClassic",
+		"formatter": {
+			"enabled": true,
+			"quoteStyle": "single",
+			"semicolons": "always",
+			"trailingCommas": "all",
+			"arrowParentheses": "always",
+			"attributePosition": "multiline"
+		}
+	}
+}
